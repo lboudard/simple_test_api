@@ -8,9 +8,9 @@ class Router {
         '/user/(\d+)' => array('controller' => 'user', 'methods' => array('get' => array('action' => 'getUser'), 'delete' => array('action' => 'deleteUser')), 'url_params' => array('user_id')),
         '/user/(\d+)/songs' => array('controller' => 'user', 'methods' => array('get' => array('action' => 'getUserSongs'), 'post' => array('action' => 'addUserSong')), 'url_params' => array('user_id')),
         '/user/(\d+)/songs/(\d+)' => array('controller' => 'user', 'methods' => array('delete' => array('action' => 'deleteUserSong')), 'url_params' => array('user_id', 'song_id')),
-        // TODO implement song controller
-        // '/song' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSongsList'), 'post' => array('action' => 'createSong')), 'url_params' => array()),
-        // '/song/(\d+)' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSong'), 'delete' => array('action' => 'deleteSong')), 'url_params' => array('song_id')),
+        '/song' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSongsList')), 'url_params' => array()),
+        '/song/(\d+)' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSong'),), 'url_params' => array('song_id')),
+        //used for cross domain iframe messaging test
         '/test_main' => array('controller' => 'test', 'methods' => array('get' => array('action' => 'main')), 'url_params' => array()),
         '/test_iframe' => array('controller' => 'test', 'methods' => array('get' => array('action' => 'iframe')), 'url_params' => array()),
     );

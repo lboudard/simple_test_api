@@ -2,9 +2,6 @@
 require_once(ROOT_DIR . '/lib/model/user.php');
 
 class User extends Controller {
-    public function __construct(){
-        parent::__construct();
-    }
  
     public function getUsersList($params) {
         $this->view->renderText(json_encode(model\User::getList()));
