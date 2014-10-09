@@ -52,10 +52,10 @@ class Model {
 }
 
 class InvalidModelException extends \Exception {
-    protected $message = 'You input invalid model';
+    protected $message = "You input invalid model";
 }
 
 class ModelNotFoundException extends \Exception {
-    protected $message = 'Model queried does not exist';
+    protected $message = "Model queried does not exist";
 }
 ?>
