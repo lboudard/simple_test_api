@@ -2,7 +2,9 @@
 namespace model;
 
 class Model {
-
+    /*
+        Base model class that instanciate model and has db utilities.
+    */
     public function __construct($model_id){
         $data = $this->get($model_id);
         foreach ($data as $k => $v) {
@@ -32,7 +34,8 @@ class Model {
     public function delete() {
         $table = static::$table;
         $pk = static::$pk;
-        $query = self::getDb()->prepare("DELETE FROM $table WHERE $pk = $this->{$pk};");
+        $pk_v = $this->$pk;
+        $query = self::getDb()->prepare("DELETE FROM $table WHERE $pk = $pk_v;");
         $query->execute();
         return true;
     }

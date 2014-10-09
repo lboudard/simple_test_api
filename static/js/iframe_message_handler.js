@@ -1,4 +1,7 @@
 (function(window) {
+    /*
+        Simple dispatcher that handle message passing to/from cross domain iframes
+    */
 	MessagesDispatcher = function() {
 		return {
 			init: function(targetDomain, targetFrame) {

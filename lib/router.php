@@ -21,6 +21,11 @@ class Router {
         $error->notFound();
     }
 
+    /**
+     * Parse url and routes to proper action passing proper parameters
+     * @param url url to parse
+     * @param method http method (GET, POST, PUT, DELETE)
+     */
     public function route($url, $method) {
         $url = parse_url($url);
         $path = preg_replace('/(\d+)/', '(\d+)', $url['path']);
@@ -36,6 +41,7 @@ class Router {
                 } elseif ($method == 'post') {
                     $params['params'] = $_POST;
                 }
+                //parsing url path parameters
                 if (preg_match_all('/\d+/', $url['path'], $matches)) {
                     $params = array_merge(array_combine($route['url_params'], $matches[0]), $params);
                 }

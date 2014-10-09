@@ -1,7 +1,9 @@
 <?php
 
 class Controller {
-    //TODO error management
+    /*
+        Base model class tfor controllers.
+    */
     protected $view;
 
     public function __construct() {

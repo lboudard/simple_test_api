@@ -6,7 +6,7 @@ import unittest
 
 class TestUserApi(unittest.TestCase):
     '''
-    A simple class to test user songs api
+    A simple class to functional test user songs api
     '''
 
     def create_user(self):
