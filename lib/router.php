@@ -11,6 +11,8 @@ class Router {
         // TODO implement song controller
         // '/song' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSongsList'), 'post' => array('action' => 'createSong')), 'url_params' => array()),
         // '/song/(\d+)' => array('controller' => 'song', 'methods' => array('get' => array('action' => 'getSong'), 'delete' => array('action' => 'deleteSong')), 'url_params' => array('song_id')),
+        '/test_main' => array('controller' => 'test', 'methods' => array('get' => array('action' => 'main')), 'url_params' => array()),
+        '/test_iframe' => array('controller' => 'test', 'methods' => array('get' => array('action' => 'iframe')), 'url_params' => array()),
     );
 
     public function notFound() {
