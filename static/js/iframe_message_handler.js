@@ -2,37 +2,37 @@
     /*
         Simple dispatcher that handle message passing to/from cross domain iframes
     */
-	MessagesDispatcher = function() {
-		return {
-			init: function(targetDomain, targetFrame) {
+    MessagesDispatcher = function() {
+        return {
+            init: function(targetDomain, targetFrame) {
                 var that = this;
                 this.targetDomain = targetDomain;
-				this.targetFrame = targetFrame;
-				this.sourceDomain = window.location.protocol + '//' + window.location.host;
-				this.messageHandlers = [];
+                this.targetFrame = targetFrame;
+                this.sourceDomain = window.location.protocol + '//' + window.location.host;
+                this.messageHandlers = [];
                 this.messageCallback = function(message) { that.processMessage(that, message); };
                 window.addEventListener('message', this.messageCallback, false);
-			},
-			getWindow: function(name) {
+            },
+            getWindow: function(name) {
                 if (name === 'parent') {
                     return window[name];
                 } else {
-    				return parent.frames[name];
+                    return parent.frames[name];
                 }
-			},
-			post: function(data) {
-				this.castMessage({
-					'data' : data,
-					'sourceDomain' : this.sourceDomain,
-					'targetOrigin' : this.targetDomain,
-				});
-			},
+            },
+            post: function(data) {
+                this.castMessage({
+                    'data' : data,
+                    'sourceDomain' : this.sourceDomain,
+                    'targetOrigin' : this.targetDomain,
+                });
+            },
             castMessage: function(message) {
                 this.getWindow(this.targetFrame).postMessage(JSON.stringify(message), message.targetOrigin);
             },
-			addMessageHandler: function(h) {
-				this.messageHandlers.push(h);
-			},
+            addMessageHandler: function(h) {
+                this.messageHandlers.push(h);
+            },
             processMessage: function(self, message) {
                 var data = JSON.parse(message.data);
                 if (data && (data.sourceDomain == self.targetDomain)) {
@@ -41,6 +41,6 @@
                     }
                 }
             },
-		}
-	};
+        }
+    };
 })(this);
